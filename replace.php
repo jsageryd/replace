@@ -18,7 +18,7 @@ function replace($string){
 
 	// Replace
 	$s = $string;
-	$padding = '§';
+	$padding = '§§§§§§§§§§';
 	foreach($replacepreamble as $k => $v){
 		$s = preg_replace('/(?<!' . $padding .')' . preg_quote($k) . '(?!' . $padding . ')/uU', $padding . preg_quote($v) . $padding, $s);
 	}

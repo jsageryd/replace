@@ -13,6 +13,7 @@
 */
 
 function replace($string){
+	// Get hash of things to replace
 	$replacepreamble = stripreplacepreamble($string);
 
 	// Replace

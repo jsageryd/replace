@@ -1,4 +1,3 @@
-<?
 /*
 	Replace plugin for MODx
 	-----------------------
@@ -12,27 +11,6 @@
 	...then searches the content for 'something' and replaces it with 'something else'
 
 */
-
-/* Start testing */
-$s = <<<EOD
-|replace|
-	tomato => apple
-	hamburger => sushi
-|/replace|
-This is between two replace sections.
-|replace|
-	dog => monkey
-	horse => cat
-	sushi => monkey
-|/replace|
-|replace|
-	apa => bepa
-|/replace|
-The cat likes hamburgers and tomato sauce and it also like sushis.
-EOD;
-
-print replace($s);
-/* End testing */
 
 function replace($string){
 	$replacepreamble = stripreplacepreamble($string);
@@ -75,7 +53,6 @@ function stripreplacepreamble(&$string){
 	return $replacepreamble;
 }
 
-/*
 $e = &$modx->Event;
 switch ($e->name) {
 	case "OnLoadWebDocument":
@@ -86,5 +63,3 @@ switch ($e->name) {
 		return;
 		break;
 }
-*/
-?>

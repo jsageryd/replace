@@ -46,10 +46,10 @@ function stripreplacepreamble(&$string){
 	// For each section, add each get each of its key-value pairs and add to $replacepreamble
 	$replacepreamble = array();
 	foreach($sections[1] as $section){
-		preg_match_all("/\s*(.*=>.*)\s*/u", $section, $entrysets);
-		foreach($entrysets[1] as $entries){
-			$entry = (preg_split("/\s*=>\s*/u", $entries));
-			$replacepreamble[chop($entry[0])] = chop($entry[1]);
+		preg_match_all("/\s*(.*=>.*)\s*/u", $section, $entries);
+		foreach($entries[1] as $entry){
+			$keyvaluepair = (preg_split("/\s*=>\s*/u", $entry));
+			$replacepreamble[chop($keyvaluepair[0])] = chop($keyvaluepair[1]);
 		}
 	}
 

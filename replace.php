@@ -18,13 +18,19 @@ function replace($string){
 
 	// Replace
 	$s = $string;
+	$counter = 0;
+	// First replace with a padded number to prevent clashes
 	$padding = '§§§§§§§§§§';
 	foreach($replacepreamble as $k => $v){
-		$s = preg_replace('/(?<!' . $padding .')' . preg_quote($k) . '(?!' . $padding . ')/uU', $padding . $v . $padding, $s);
+		$s = preg_replace('/(?<!' . $padding .')' . preg_quote($k) . '(?!' . $padding . ')/uU', $padding . $counter . $padding, $s);
+		$counter++;
 	}
-
-	// Remove all padding
-	$s = preg_replace('/'.$padding.'/u', '', $s);
+	// Then replace that padded number with the actual value
+	$counter = 0;
+	foreach($replacepreamble as $k => $v){
+		$s = preg_replace('/' . $padding . $counter . $padding . '/uU', $v, $s);
+		$counter++;
+	}
 
 	return $s;
 }

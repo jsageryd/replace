@@ -25,7 +25,7 @@ function replace($string){
 	// First replace with a padded number to prevent clashes
 	$padding = '§§§§§§§§§§';
 	foreach($replacepreamble as $k => $v){
-		$s = preg_replace('/(?<!' . $padding .')' . preg_quote($k) . '(?!' . $padding . ')/uU', $padding . $counter . $padding, $s);
+		$s = preg_replace('/' . preg_quote($k) . '/uU', $padding . $counter . $padding, $s);
 		$counter++;
 	}
 	// Then replace that padded number with the actual value

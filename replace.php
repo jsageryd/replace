@@ -16,6 +16,9 @@ function replace($string){
 	// Get hash of things to replace
 	$replacepreamble = stripreplacepreamble($string);
 
+	// Sort its keys by length, longest word first to prevent substring replacement
+	uksort($replacepreamble, function ($a, $b){ return mb_strlen($a, 'UTF-8') < mb_strlen($b, 'UTF-8'); });
+
 	// Replace
 	$s = $string;
 	$counter = 0;

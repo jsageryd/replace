@@ -40,7 +40,7 @@ function stripreplacepreamble(&$string){
 		preg_match_all("/\s*(.*=>.*)\s*/u", $section, $entrysets);
 		foreach($entrysets[1] as $entries){
 			$entry = (preg_split("/\s*=>\s*/u", $entries));
-			$replacepreamble[$entry[0]] = $entry[1];
+			$replacepreamble[chop($entry[0])] = chop($entry[1]);
 		}
 	}
 

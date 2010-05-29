@@ -20,7 +20,7 @@ function replace($string){
 	$s = $string;
 	$padding = '§§§§§§§§§§';
 	foreach($replacepreamble as $k => $v){
-		$s = preg_replace('/(?<!' . $padding .')' . preg_quote($k) . '(?!' . $padding . ')/uU', $padding . preg_quote($v) . $padding, $s);
+		$s = preg_replace('/(?<!' . $padding .')' . preg_quote($k) . '(?!' . $padding . ')/uU', $padding . $v . $padding, $s);
 	}
 
 	// Remove all padding

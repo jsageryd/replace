@@ -41,7 +41,7 @@ function replace($string){
 // Returns a hash with all section content and removes the section(s) from the string
 function sectionstohash(&$string, $sectionidentifier){
 	// Get all |sectionidentifier| |/sectionidentifier| sections
-	preg_match_all("/\|$sectionidentifier\|\s*?(.*)\s*?\|\/$sectionidentifier\|/uisU", $string, $sections);
+	preg_match_all("/\|$sectionidentifier\|\s*(.*)\s*\|\/$sectionidentifier\|/uisU", $string, $sections);
 
 	// For each section, add each get each of its key-value pairs and add to $returnhash
 	$returnhash = array();

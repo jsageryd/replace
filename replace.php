@@ -1,3 +1,5 @@
+namespace Replace_plugin;
+
 /*
 	Replace plugin for MODx
 	-----------------------

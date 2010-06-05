@@ -18,26 +18,8 @@ function replace($string){
 	// Get hash of things to replace
 	$sectionscontent = sectionstohash($string, 'replace');
 
-	// Sort its keys by length, longest word first to prevent substring replacement
-	uksort($sectionscontent, function ($a, $b){ return mb_strlen($a, 'UTF-8') < mb_strlen($b, 'UTF-8'); });
-
-	// Replace
-	$s = $string;
-	$counter = 0;
-	// First replace with a padded number to prevent clashes
-	$padding = '§§§§§§§§§§';
-	foreach($sectionscontent as $k => $v){
-		$s = preg_replace('/' . preg_quote($k) . '/uU', $padding . $counter . $padding, $s);
-		$counter++;
-	}
-	// Then replace that padded number with the actual value
-	$counter = 0;
-	foreach($sectionscontent as $k => $v){
-		$s = preg_replace('/' . $padding . $counter . $padding . '/uU', $v, $s);
-		$counter++;
-	}
-
-	return $s;
+	// Replace and return
+	return strtr($string, $sectionscontent);
 }
 
 // Returns a hash with all section content and removes the section(s) from the string

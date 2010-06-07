@@ -38,7 +38,7 @@ function sectionstohash(&$string, $sectionidentifier){
 	}
 
 //	Remove all |sectionidentifier| |/sectionidentifier| sections from the original string
-	do{	
+	do{
 		$laststring = $string;
 		$string = preg_replace("/(\|$sectionidentifier\|.*\|\/$sectionidentifier\|\s)/uisU", '', $string);
 	}while($string !== $laststring);

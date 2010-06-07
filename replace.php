@@ -15,19 +15,19 @@ namespace Replace_plugin;
 */
 
 function replace($string){
-	// Get hash of things to replace
+//	Get hash of things to replace
 	$sectionscontent = sectionstohash($string, 'replace');
 
-	// Replace and return
+//	Replace and return
 	return strtr($string, $sectionscontent);
 }
 
 // Returns a hash with all section content and removes the section(s) from the string
 function sectionstohash(&$string, $sectionidentifier){
-	// Get all |sectionidentifier| |/sectionidentifier| sections
+//	Get all |sectionidentifier| |/sectionidentifier| sections
 	preg_match_all("/\|$sectionidentifier\|\s*(.*)\s*\|\/$sectionidentifier\|/uisU", $string, $sections);
 
-	// For each section, add each get each of its key-value pairs and add to $returnhash
+//	For each section, add each get each of its key-value pairs and add to $returnhash
 	$returnhash = array();
 	foreach($sections[1] as $section){
 		preg_match_all("/\s*(.*=>.*)\s*/u", $section, $entries);
@@ -37,13 +37,13 @@ function sectionstohash(&$string, $sectionidentifier){
 		}
 	}
 
-	// Remove all |sectionidentifier| |/sectionidentifier| sections from the original string
+//	Remove all |sectionidentifier| |/sectionidentifier| sections from the original string
 	do{	
 		$laststring = $string;
 		$string = preg_replace("/(\|$sectionidentifier\|.*\|\/$sectionidentifier\|\s)/uisU", '', $string);
 	}while($string !== $laststring);
 
-	// Return hash
+//	Return hash
 	return $returnhash;
 }
 
